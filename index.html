@@ -68,13 +68,7 @@ body {
   .music-player { bottom: calc(14px + env(safe-area-inset-bottom)) !important; }
 }
 
-/* noise overlay */
-body::before {
-  content: '';
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-}
+/* noise overlay removed for performance */
 
 /* ===================== PAGE SYSTEM ===================== */
 .page { display: none; min-height: 100vh; }
@@ -1166,7 +1160,7 @@ body::before {
   <!-- PAGE 2 — JOURNEY -->
   <div class="page" id="page-journey">
     <div class="hero-section">
-      <img src="1.jpeg" alt="صورتنا" fetchpriority="high" decoding="async">
+      <img src="1.jpeg" alt="صورتنا" loading="eager" decoding="async" fetchpriority="high">
       <div class="hero-overlay"></div>
       <div class="hero-badge">بحبك 💕</div>
       <div class="scroll-hint" id="scrollHint">⌄</div>
@@ -1301,7 +1295,7 @@ body::before {
         <!-- Video 1 -->
         <div class="video-card">
           <div class="video-wrapper">
-            <video src="WhatsApp Video 2026-07-11 at 2.22.26 PM.mp4" loop playsinline preload="metadata" onclick="this.paused?this.play():this.pause()"></video>
+            <video src="WhatsApp Video 2026-07-11 at 2.22.26 PM.mp4" loop playsinline preload="none" onclick="this.paused?this.play():this.pause()"></video>
             <div class="video-overlay">
               <div class="video-play-icon">▶</div>
             </div>
@@ -1312,7 +1306,7 @@ body::before {
         <!-- Video 2 -->
         <div class="video-card">
           <div class="video-wrapper">
-            <video src="WhatsApp Video 2026-07-11 at 2.23.56 PM.mp4" loop playsinline preload="metadata" onclick="this.paused?this.play():this.pause()"></video>
+            <video src="WhatsApp Video 2026-07-11 at 2.23.56 PM.mp4" loop playsinline preload="none" onclick="this.paused?this.play():this.pause()"></video>
             <div class="video-overlay">
               <div class="video-play-icon">▶</div>
             </div>
@@ -1383,7 +1377,7 @@ body::before {
         </div>
       </div>
     </div>
-    <audio id="loveSong" preload="auto" autoplay playsinline muted src="WhatsApp Audio 2026-07-11 at 5.15.04 PM.mpeg"></audio>
+    <audio id="loveSong" preload="none" autoplay playsinline muted src="WhatsApp Audio 2026-07-11 at 5.15.04 PM.mpeg"></audio>
   </div>
 
   <script type="application/json" id="songUrls">["WhatsApp Audio 2026-07-11 at 5.15.04 PM.mpeg"]</script>
@@ -1536,7 +1530,7 @@ let floatInterval = null;
 function startFloats(){
   if(floatInterval) return;
   floatInterval = setInterval(()=>{
-    for(let i=0;i<3;i++){
+    for(let i=0;i<2;i++){
       const el=document.createElement('div');
       el.className='float-item';
       el.textContent=heartIcons[Math.floor(Math.random()*heartIcons.length)];
@@ -1679,7 +1673,7 @@ document.querySelectorAll('.video-wrapper video').forEach(video => {
   const container = document.getElementById('loginHearts');
   if(!container) return;
   const hearts = ['💖', '💗', '💕', '💞', '💓', '💘', '❤️'];
-  for(let i = 0; i < 20; i++){
+  for(let i = 0; i < 10; i++){
     const el = document.createElement('div');
     el.className = 'login-heart';
     el.textContent = hearts[Math.floor(Math.random() * hearts.length)];
