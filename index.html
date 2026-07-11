@@ -4,6 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>our memories 💖</title>
+  <meta name="description" content="بحبك لحد ما يوقف قلبي 💗">
+  <meta property="og:title" content="our memories 💖">
+  <meta property="og:description" content="بودي حبيبي ونور عيوني بجد💗 بحبك اوي اوي يا اغلي حاجه فحياتي">
+  <meta property="og:image" content="https://body-looooove.vercel.app/1.jpeg">
+  <meta property="og:url" content="https://body-looooove.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="our memories 💖">
+  <meta name="twitter:description" content="بودي حبيبي ونور عيوني بجد💗 بحبك اوي اوي يا اغلي حاجه فحياتي">
+  <meta name="twitter:image" content="https://body-looooove.vercel.app/1.jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Cairo:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Caveat:wght@400;500;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&family=Sacramento&display=swap" rel="stylesheet">
@@ -835,6 +845,37 @@ body::before {
 .msg-footer { font-family:var(--font-signature);margin-top:36px;font-size:clamp(1.6em,5vw,2.4em);color:var(--pink-main);font-weight:400;animation:titleGlow 3s infinite alternate;transition:all .3s ease;cursor:default; }
 .msg-footer:hover { transform:scale(1.12); }
 
+.closing-message {
+  background: linear-gradient(145deg, rgba(255,245,249,0.95), rgba(255,240,245,0.9)) !important;
+  border: 1.5px solid rgba(200,80,120,0.25) !important;
+  border-radius: 20px !important;
+  padding: 24px 20px !important;
+  box-shadow: 0 8px 30px rgba(200,80,120,0.15), 0 0 20px rgba(220,160,180,0.12) !important;
+  text-align: center !important;
+  line-height: 2.2 !important;
+  white-space: pre-line !important;
+  font-size: clamp(1.1em, 3.5vw, 1.4em) !important;
+  position: relative;
+}
+.closing-message::before {
+  content: '💗';
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.6rem;
+  animation: heartPulse 2s ease-in-out infinite;
+}
+.closing-message::after {
+  content: '💗';
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.6rem;
+  animation: heartPulse 2s ease-in-out infinite 0.5s;
+}
+
 .music-player {
   position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:100;
   width:calc(100% - 28px);max-width:520px;
@@ -1103,9 +1144,6 @@ body::before {
           </div>
           <div class="letter-body" id="letter-body" aria-label="Letter content"></div>
           <footer class="letter-footer">
-            <div class="letter-closing-wrap">
-              <span class="letter-from" id="letter-from"></span>
-            </div>
             <div class="footer-divider" aria-hidden="true">
               <svg width="100%" height="100%" viewBox="0 0 200 16" fill="none">
                 <line x1="0" y1="8" x2="65" y2="8" stroke="var(--gold)" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.5"/>
@@ -1263,7 +1301,7 @@ body::before {
         <!-- Video 1 -->
         <div class="video-card">
           <div class="video-wrapper">
-            <video src="WhatsApp Video 2026-07-11 at 2.22.26 PM.mp4" loop muted playsinline preload="metadata" onclick="this.paused?this.play():this.pause()"></video>
+            <video src="WhatsApp Video 2026-07-11 at 2.22.26 PM.mp4" loop playsinline preload="metadata" onclick="this.paused?this.play():this.pause()"></video>
             <div class="video-overlay">
               <div class="video-play-icon">▶</div>
             </div>
@@ -1274,7 +1312,7 @@ body::before {
         <!-- Video 2 -->
         <div class="video-card">
           <div class="video-wrapper">
-            <video src="WhatsApp Video 2026-07-11 at 2.23.56 PM.mp4" loop muted playsinline preload="metadata" onclick="this.paused?this.play():this.pause()"></video>
+            <video src="WhatsApp Video 2026-07-11 at 2.23.56 PM.mp4" loop playsinline preload="metadata" onclick="this.paused?this.play():this.pause()"></video>
             <div class="video-overlay">
               <div class="video-play-icon">▶</div>
             </div>
@@ -1285,7 +1323,7 @@ body::before {
       </div>
       <div class="final-cta">
         <p class="cta-text"><span class="rainbow-love">💖 بحبك للأبد 💖</span></p>
-        <button class="next-btn" id="toPage3Btn">💌 رسالتي ليكِ 💌</button>
+        <button class="next-btn" id="toPage3Btn">💌 رسالتي ليك 💌</button>
       </div>
     </div>
   </div>
@@ -1303,6 +1341,12 @@ body::before {
         <div class="message">قلبي معاك في كل لحظة</div>
         <div class="message">إنت نور حياتي وده لوحده كافي</div>
         <div class="message">بحبك لحد ما يوقف قلبي</div>
+        <div class="message closing-message">بودي حبيبي ونور عيوني بجد💗
+بحبك اوي اوي يا اغلي حاجه فحياتي وعوضي ف الدنياااا
+يارب تبقا مبسوط ونت بتشوف الويب دا
+حاولت اخلي حاجه مميزه تكون فيها الميموريز بتاعتنا
+ف يارب تبقا مبسوط وحقيقي أنا مبسوط ونت معايا ونت جمبي
+بموت فيك✋🏼🫵🏼💗💗💗💗💗💗💗💗</div>
       </div>
       <button class="next-btn" id="backBtn">🔄 memories</button>
       <div class="msg-footer">💓 Lovely 💓</div>
@@ -1352,7 +1396,7 @@ body::before {
 const CONFIG = {
   title:       '😍',
   letter_body: `بودي حبيبي ونور عيوني بجد💗\n\nبحبك اوي اوي يا اغلي حاجه فحياتي وعوضي ف الدنياااا يارب تبقا مبسوط ونت بتشوف الويب دا حاولت اخلي حاجه مميزه تكون فيها الميموريز بتاعتنا ف يارب تبقا مبسوط وحقيقي أنا مبسوط ونت معايا ونت جمبي بموت فيك✋🏼🫵🏼💗💗💗💗💗💗💗💗`,
-  from:        'بودي حبيبي ونور عيوني بجد💗\nبحبك اوي اوي يا اغلي حاجه فحياتي وعوضي ف الدنياااا\nيارب تبقا مبسوط ونت بتشوف الويب دا\nحاولت اخلي حاجه مميزه تكون فيها الميموريز بتاعتنا\nف يارب تبقا مبسوط وحقيقي أنا مبسوطه ونت معايا ونت جمبي\nبموت فيك✋🏼🫵🏼💗💗💗💗💗💗💗💗',
+  from:        '',
 };
 
 /* ==================== LETTER HELPERS ==================== */
