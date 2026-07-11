@@ -1295,7 +1295,7 @@ body {
         <!-- Video 1 -->
         <div class="video-card">
           <div class="video-wrapper">
-            <video src="WhatsApp Video 2026-07-11 at 2.22.26 PM.mp4" loop playsinline preload="metadata" onclick="this.paused?this.play():this.pause()"></video>
+            <video src="WhatsApp Video 2026-07-11 at 2.22.26 PM.mp4" loop playsinline preload="auto" onclick="this.paused?this.play():this.pause()"></video>
             <div class="video-overlay">
               <div class="video-play-icon">▶</div>
             </div>
@@ -1306,7 +1306,7 @@ body {
         <!-- Video 2 -->
         <div class="video-card">
           <div class="video-wrapper">
-            <video src="WhatsApp Video 2026-07-11 at 2.23.56 PM.mp4" loop playsinline preload="metadata" onclick="this.paused?this.play():this.pause()"></video>
+            <video src="WhatsApp Video 2026-07-11 at 2.23.56 PM.mp4" loop playsinline preload="auto" onclick="this.paused?this.play():this.pause()"></video>
             <div class="video-overlay">
               <div class="video-play-icon">▶</div>
             </div>
@@ -1646,18 +1646,30 @@ document.addEventListener('click',(e)=>{
 
 /* ==================== VIDEO CARDS ==================== */
 document.querySelectorAll('.video-wrapper video').forEach(video => {
+  video.addEventListener('loadedmetadata', function() {
+    this.currentTime = 0.5;
+  });
+  video.addEventListener('seeked', function() {
+    if(!this._userPlayed) {
+      this.pause();
+    }
+  });
   video.addEventListener('play', function() {
+    this._userPlayed = true;
     this.classList.add('playing');
     this.closest('.video-wrapper').querySelector('.video-overlay').style.opacity = '0';
     audio.pause();
     setPlaying(false);
   });
   video.addEventListener('pause', function() {
-    this.classList.remove('playing');
-    this.closest('.video-wrapper').querySelector('.video-overlay').style.opacity = '1';
-    audio.play().then(() => setPlaying(true)).catch(() => {});
+    if(this._userPlayed) {
+      this.classList.remove('playing');
+      this.closest('.video-wrapper').querySelector('.video-overlay').style.opacity = '1';
+      audio.play().then(() => setPlaying(true)).catch(() => {});
+    }
   });
   video.addEventListener('ended', function() {
+    this._userPlayed = false;
     this.classList.remove('playing');
     this.closest('.video-wrapper').querySelector('.video-overlay').style.opacity = '1';
     audio.play().then(() => setPlaying(true)).catch(() => {});
