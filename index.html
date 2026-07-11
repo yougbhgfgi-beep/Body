@@ -1658,10 +1658,12 @@ document.querySelectorAll('.video-wrapper video').forEach(video => {
   video.addEventListener('pause', function() {
     this.classList.remove('playing');
     this.closest('.video-wrapper').querySelector('.video-overlay').style.opacity = '1';
+    audio.play().then(() => setPlaying(true)).catch(() => {});
   });
   video.addEventListener('ended', function() {
     this.classList.remove('playing');
     this.closest('.video-wrapper').querySelector('.video-overlay').style.opacity = '1';
+    audio.play().then(() => setPlaying(true)).catch(() => {});
   });
 });
 
